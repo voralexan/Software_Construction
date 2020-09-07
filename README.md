@@ -1,2 +1,5 @@
-# Software_Construction
+# Software Construction
+ Репозиторий по курсу Конструирование ПО.
  
+ **Выполненные работы:**
+   + 2d-kurves
