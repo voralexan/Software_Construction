@@ -8,6 +8,6 @@ private:
 	double radius;
 public:
 	Circle() { radius = 0; }
-	Circle(double _r) { radius = _r; }
+	Circle(double radius) { this->radius = radius; }
 	TNote * Insert();
 };

@@ -25,3 +25,7 @@
 *.xml
 *.nupkg
 *.filters
+*.db-wal
+2D-curves/.vs/2D-curves/v16/.suo
+*.opendb
+*.db-shm

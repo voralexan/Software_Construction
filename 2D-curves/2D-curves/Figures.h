@@ -3,14 +3,13 @@
 #include <string>
 #include <iostream>
 #include <vector>
-using namespace std;
 
 struct TNote             // запись о кривой
 {
-	string str;		//кривая в виде строки	
-	double area;	//площадь кривой
+	std::string str;		//кривая в виде строки	
+	double area;			//площадь кривой
 	TNote() {}
-	TNote(string _str, double _area)
+	TNote(std::string _str, double _area)
 	{
 		str = _str;
 		area = _area;
@@ -20,13 +19,13 @@ struct TNote             // запись о кривой
 class Figures 
 {
 private:
-	vector <TNote*> List_curves;	//вектор, в котором хранятся кривые
-protected:
-	unsigned int length;         // количество записей в таблице
+	std::vector <TNote*> List_curves;	//вектор, в котором хранятся кривые
+
 public:
 	Figures();
 	~Figures();
 	void Insert();					// добавление новой кривой
+	void GenerateRandomFigures(int amount);
 	void Print();					//вывод списка таблиц на экран	
 	double Total_area();			//общая площадь
 	void Sort();					//сортировка записей
