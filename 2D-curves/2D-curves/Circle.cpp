@@ -1,11 +1,13 @@
 #include "Figures.h"
 #include "Circle.h"
 
-TNote * Circle::Insert()
+CurveSample * Circle::insert()
 {
-	double S;
-	S = PI * radius * radius;
-	TNote *p = new TNote;
-	p->area = S;
+	CurveSample *p = new CurveSample;
+	p->area = calculateArea();
 	return p;
+}
+
+double Circle::calculateArea() {
+	return PI * radius * radius;
 }

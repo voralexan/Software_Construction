@@ -1,12 +1,13 @@
 #pragma once
-#include "Shape.h"
+#include "Curve.h"
 
-class Ellipse : public Shape
+class Ellipse : public Curve
 {
 private:
-	double a, b;
+	double height, width;
 public:
-	Ellipse() { a = 0; b = 0; }
-	Ellipse(double a, double b) { this->a = a, this->b = b; }
-	TNote * Insert();
+	Ellipse() { height = 0; width = 0; }
+	Ellipse(double height, double width) { this->height = height, this->width = width; }
+	double calculateArea();
+	CurveSample * insert();
 };

@@ -1,13 +1,13 @@
 #pragma once
-#include "Shape.h"
-#include <math.h>
+#include "Curve.h"
 
-class Circle : public Shape
+class Circle : public Curve
 {
 private:
 	double radius;
 public:
 	Circle() { radius = 0; }
 	Circle(double radius) { this->radius = radius; }
-	TNote * Insert();
+	double calculateArea();
+	CurveSample * insert();
 };

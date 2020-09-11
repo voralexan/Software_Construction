@@ -2,11 +2,14 @@
 #include "Ellipse.h"
 
 
-TNote * Ellipse::Insert()
+CurveSample * Ellipse::insert()
 {
 	double S;
-	S = PI * a * b;
-	TNote *p = new TNote;
-	p->area = S;
+	CurveSample *p = new CurveSample;
+	p->area = calculateArea();
 	return p;
+}
+
+double Ellipse::calculateArea() {
+	return  PI * height * width;
 }

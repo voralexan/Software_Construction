@@ -14,40 +14,46 @@ int main()
 	while (cmd != 0) {
 		cout << endl;
 		cout << "Choose the action:" << endl;
-		cout << "0 - exit" << endl;
-		cout << "1 - add the curve" << endl;
-		cout << "2 - show curves" << endl;
-		cout << "3 - sort curves in the list by area" << endl;
-		cout << "4 - count total area" << endl;
-		cout << "5 - generate random curves" << endl;
+		cout << "0 - Exit" << endl;
+		cout << "1 - Add new curve" << endl;
+		cout << "2 - Generate random curves" << endl;
+		cout << "3 - Show the list of curves" << endl;
+		cout << "4 - Sort curves in the list by area" << endl;
+		cout << "5 - Count total area" << endl;
+
 		cin >> cmd;
 		switch (cmd)
 		{
+
 		default:
 			cout << "Incorrect data " << endl;
 			break;
+
 		case 0:
 			break;
+
 		case 1:
-			f.Insert();
+			f.insert();
 			break;
 
 		case 2:
-			f.Print();
-			break;
-		case 3:
-			f.Sort();
-			f.Print();
-			break;
-		case 4:
-			cout << "Total area of figures = " << f.Total_area() << endl;
-			break;
-		case 5:
 			cout << "Enter count: " << endl;
 			int count;
 			cin >> count;
-			f.GenerateRandomFigures(count);
+			f.generateRandomFigures(count);
 			break;
+
+		case 3:
+			f.print();
+			break;
+		case 4:
+			f.sortByArea();
+			f.print();
+			break;
+		case 5:
+			cout << "Total area of figures = " << f.getTotalArea() << endl;
+			break;
+
 		}
 	}
 	system("pause");

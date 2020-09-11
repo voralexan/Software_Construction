@@ -4,38 +4,41 @@
 #include <iostream>
 #include <vector>
 
-struct TNote             // запись о кривой
+struct CurveSample
 {
-	std::string str;		//кривая в виде строки	
-	double area;			//площадь кривой
-	TNote() {}
-	TNote(std::string _str, double _area)
+	std::string curveFormula;
+	double area;
+	CurveSample() {
+		area = 0;
+		curveFormula = "";
+	}
+	CurveSample(std::string curveFormula, double area)
 	{
-		str = _str;
-		area = _area;
+		this->curveFormula = curveFormula;
+		this->area = area;
 	}
 };
 
 class Figures 
 {
 private:
-	std::vector <TNote*> List_curves;	//вектор, в котором хранятся кривые
+	std::vector <CurveSample*> curvesArray;
 
 public:
 	Figures() {
 	};
 	~Figures() {
 
-		for (auto i : List_curves)
+		for (auto i : curvesArray)
 		{
 				delete i;
 		}
 	};
-	void Insert();					// добавление новой кривой
-	void GenerateRandomFigures(int amount);
-	void Print();					//вывод списка таблиц на экран	
-	double Total_area();			//общая площадь
-	void Sort();					//сортировка записей
+	void insert();
+	void generateRandomFigures(int amount);
+	void print();	
+	double getTotalArea();
+	void sortByArea();
 };
 
 
