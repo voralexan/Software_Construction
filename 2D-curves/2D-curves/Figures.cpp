@@ -5,14 +5,6 @@
 #include "Circle.h"
 #include "Ellipse.h"
 
-Figures::Figures()
-{
-}
-
-Figures::~Figures()
-{
-	List_curves.clear();
-}
 void Figures::Insert()	//добавление новой кривой
 {
 	char n;
@@ -36,6 +28,7 @@ void Figures::Insert()	//добавление новой кривой
 			throw("Error: Incorrect arguments");
 		Shape* c = new Circle(r);
 		t = c->Insert();
+		delete c;
 		t->str = "(x - " + str_x0 + ")^2 + (y - " + str_y0 + ")^2 = " + std::to_string(r * r);
 		List_curves.push_back(t);	//добавление кривой в вектор	
 		std::cout <<"The equation: "<< t->str <<"  has been added, its area = " << t->area << std::endl;
@@ -53,6 +46,7 @@ void Figures::Insert()	//добавление новой кривой
 			throw("Error: Incorrect arguments");
 		Shape* e = new Ellipse(a, b);
 		t = e->Insert();
+		delete e;
 		t->str = "x^2 / " + std::to_string(a * a) + " + y^2 / " + std::to_string(b * b) + " = 1";
 		List_curves.push_back(t);	//добавление кривой в вектор
 		std::cout << "The equation: " << t->str << "  has been added, its area = " << t->area << std::endl;
@@ -76,9 +70,9 @@ void Figures::GenerateRandomFigures(int amount)
 			int a = rand() % 25;
 			int b = rand() % 25;
 			int r = rand() % 25; 
-			Shape* c = new Circle(r
-);
+			Shape* c = new Circle(r);
 			t = c->Insert();
+			delete c;
 			t->str = "(x - " + std::to_string(a) + ")^2 + (y - " + std::to_string(b) + ")^2 = " + std::to_string(r * r);
 			List_curves.push_back(t);
 		}
@@ -87,6 +81,7 @@ void Figures::GenerateRandomFigures(int amount)
 			int b = rand() % 25;
 			Shape * e = new Ellipse(a,b);
 			t = e->Insert();
+			delete e;
 			t->str = "x^2 / " + std::to_string(a * a) + " + y^2 / " + std::to_string(b * b) + " = 1";
 			List_curves.push_back(t);
 		}

@@ -22,8 +22,15 @@ private:
 	std::vector <TNote*> List_curves;	//вектор, в котором хранятся кривые
 
 public:
-	Figures();
-	~Figures();
+	Figures() {
+	};
+	~Figures() {
+
+		for (auto i : List_curves)
+		{
+				delete i;
+		}
+	};
 	void Insert();					// добавление новой кривой
 	void GenerateRandomFigures(int amount);
 	void Print();					//вывод списка таблиц на экран	
