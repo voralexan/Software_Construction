@@ -2,10 +2,9 @@
 #include "Ellipse.h"
 
 
-CurveSample * Ellipse::insert()
+std::unique_ptr<CurveSample> Ellipse::insert()
 {
-	double S;
-	CurveSample *p = new CurveSample;
+	auto p = std::make_unique<CurveSample>();
 	p->area = calculateArea();
 	return p;
 }

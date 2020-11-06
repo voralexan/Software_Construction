@@ -1,9 +1,9 @@
 #include "Figures.h"
 #include "Circle.h"
 
-CurveSample * Circle::insert()
+std::unique_ptr<CurveSample> Circle::insert()
 {
-	CurveSample *p = new CurveSample;
+	auto p = std::make_unique<CurveSample>();
 	p->area = calculateArea();
 	return p;
 }

@@ -9,5 +9,5 @@ public:
 	Circle() { radius = 0; }
 	Circle(double radius) { this->radius = radius; }
 	double calculateArea();
-	CurveSample * insert();
+	std::unique_ptr<CurveSample> insert();
 };
