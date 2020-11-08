@@ -9,8 +9,8 @@ using namespace std;
 
 int main()
 {
-	Figures f;
-	int cmd=1;
+	Figures figures;
+	int cmd = 1;
 	while (cmd != 0) {
 		cout << endl;
 		cout << "Choose the action:" << endl;
@@ -33,25 +33,25 @@ int main()
 			break;
 
 		case 1:
-			f.insert();
+			figures.insert();
 			break;
 
 		case 2:
 			cout << "Enter count: " << endl;
 			int count;
 			cin >> count;
-			f.generateRandomFigures(count);
+			figures.generateRandomFigures(count);
 			break;
 
 		case 3:
-			f.print();
+			figures.print();
 			break;
 		case 4:
-			f.sortByArea();
-			f.print();
+			figures.sortByArea();
+			figures.print();
 			break;
 		case 5:
-			cout << "Total area of figures = " << f.getTotalArea() << endl;
+			cout << "Total area of figures = " << figures.getTotalArea() << endl;
 			break;
 
 		}

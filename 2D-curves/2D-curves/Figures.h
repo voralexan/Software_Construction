@@ -12,7 +12,6 @@ struct CurveSample
 		area = 0;
 		curveFormula = "";
 	}
-	CurveSample(const CurveSample&) = delete;
 	CurveSample(std::string curveFormula, double area)
 	{
 		this->curveFormula = curveFormula;
@@ -20,7 +19,7 @@ struct CurveSample
 	}
 };
 
-class Figures 
+class Figures
 {
 private:
 	std::vector <std::unique_ptr<CurveSample>> curvesArray;
@@ -32,7 +31,7 @@ public:
 	~Figures() {};
 	void insert();
 	void generateRandomFigures(int amount);
-	void print();	
+	void print();
 	double getTotalArea();
 	void sortByArea();
 };

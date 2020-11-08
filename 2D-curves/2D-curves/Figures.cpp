@@ -18,18 +18,18 @@ void Figures::insert()
 	case 0:
 	{
 		std::unique_ptr<CurveSample> sample = FigureBuilder::createCircle();
-		curvesArray.push_back(std::move(sample));
 		std::cout << "The equation: " << sample->curveFormula << "  has been added, its area = " << sample->area << std::endl;
+		curvesArray.push_back(std::move(sample));
 		break;
 	}
 	case 1:
 	{
 		std::unique_ptr<CurveSample> sample = FigureBuilder::createEllipse();
-		curvesArray.push_back(std::move(sample));
 		std::cout << "The equation: " << sample->curveFormula << "  has been added, its area = " << sample->area << std::endl;
+		curvesArray.push_back(std::move(sample));
 		break;
 	}
-	
+
 	}
 }
 
@@ -40,7 +40,7 @@ void Figures::generateRandomFigures(int amount)
 	srand(std::time(nullptr));
 	for (size_t i = 0; i < amount; i++)
 	{
-		std::unique_ptr<CurveSample> t;
+
 		int figureType = rand() % 2;
 		switch (figureType)
 		{
@@ -48,22 +48,13 @@ void Figures::generateRandomFigures(int amount)
 			break;
 		case 0:
 		{
-			int a = rand() % 25;
-			int b = rand() % 25;
-			int r = rand() % 25;
-			auto c = std::make_unique<Circle>(r);
-						t = c->insert();
-						t->curveFormula = "(x - " + std::to_string(a) + ")^2 + (y - " + std::to_string(b) + ")^2 = " + std::to_string(r * r);
-						curvesArray.push_back(std::move(t));
-					}
-					case 1:
-						int a = rand() % 25;
-						int b = rand() % 25;
-						auto e = std::make_unique<Ellipse>(a, b);
-						t = e->insert();
-						t->curveFormula = "x^2 / " + std::to_string(a * a) + " + y^2 / " + std::to_string(b * b) + " = 1";
-						curvesArray.push_back(std::move(t));
-		
+			std::unique_ptr<CurveSample> sample = FigureBuilder::randomCircle();
+			curvesArray.push_back(std::move(sample));
+		}
+		case 1:
+			std::unique_ptr<CurveSample> sample = FigureBuilder::randomEllipse();
+			curvesArray.push_back(std::move(sample));
+
 		}
 	}
 }
@@ -96,12 +87,9 @@ double Figures::getTotalArea()
 {
 	if (curvesArray.empty()) return 0;
 	double total = 0;
-	for (const auto &i : curvesArray)
+	for (const auto& i : curvesArray)
 	{
 		total += i->area;
 	}
 	return total;
 }
-
-
-
