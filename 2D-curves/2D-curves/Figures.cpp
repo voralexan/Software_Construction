@@ -5,6 +5,7 @@
 #include "Figures.h"
 #include"FigureBuilder.h"
 
+
 void Figures::insert()
 {
 	int figureType;
@@ -12,6 +13,7 @@ void Figures::insert()
 	std::cout << "	Choose the figure: " << std::endl;
 	std::cout << "	0 - Circle" << std::endl;
 	std::cout << "	1 - Ellipse" << std::endl;
+	std::cout << "	2 - Compound Object" << std::endl;
 	std::cin >> figureType;
 	switch (figureType)
 	{
@@ -29,7 +31,13 @@ void Figures::insert()
 		curvesArray.push_back(std::move(sample));
 		break;
 	}
-
+	case 2:
+	{
+		std::unique_ptr<CurveSample> sample = FigureBuilder::createCompound();
+		std::cout << "The compound: " << sample->curveFormula << "  has been added, its area = " << sample->area << std::endl;
+		curvesArray.push_back(std::move(sample));
+		break;
+	}
 	}
 }
 
@@ -46,25 +54,28 @@ void Figures::generateRandomFigures(int amount)
 		{
 		default:
 			break;
-		case 0:
+		case 0: 
 		{
 			std::unique_ptr<CurveSample> sample = FigureBuilder::randomCircle();
 			curvesArray.push_back(std::move(sample));
 		}
 		case 1:
+		{
 			std::unique_ptr<CurveSample> sample = FigureBuilder::randomEllipse();
 			curvesArray.push_back(std::move(sample));
-
+		}
 		}
 	}
 }
 
 void Figures::print()
 {
+	int counter=0;
 	if (curvesArray.empty()) return;
 	for (const auto& i : curvesArray)
 	{
-		std::cout << i->curveFormula << "		S = " << i->area << std::endl;
+		counter++;
+		std::cout <<"Figure number: " <<counter <<" | " << i->curveFormula << "		   S = " << i->area << std::endl;
 	}
 }
 

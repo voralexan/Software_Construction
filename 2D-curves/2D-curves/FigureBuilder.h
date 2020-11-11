@@ -1,6 +1,7 @@
 #pragma once
 #include "Circle.h"
 #include "Ellipse.h"
+#include "CompoundObject.h"
 
 class FigureBuilder
 {
@@ -35,6 +36,39 @@ public:
 		auto ellipse = std::make_unique<Ellipse>(height, width);
 		sample = ellipse->insert();
 		sample->curveFormula = "x^2 / " + std::to_string(height * height) + " + y^2 / " + std::to_string(width * width) + " = 1";
+		return sample;
+	}
+
+	static std::unique_ptr<CurveSample> createCompound() {
+		std::unique_ptr<CurveSample> sample;
+		auto object = std::make_unique<CompoundObject>();
+		int figureType;
+		do {
+			std::cout << "	0 - Exit" << std::endl;
+			std::cout << "	Choose the figure: " << std::endl;
+			std::cout << "	1 - Circle" << std::endl;
+			std::cout << "	2 - Ellipse" << std::endl;
+			std::cin >> figureType;
+			switch (figureType)
+			{
+			case 1:
+			{
+				std::unique_ptr<CurveSample> circle = createCircle();
+				std::cout << "The equation: " << circle->curveFormula << "  has been added, its area = " << circle->area << std::endl;
+				object->addObject(*circle.get());
+				break;
+			}
+			case 2:
+			{
+				std::unique_ptr<CurveSample> ellipse = createEllipse();
+				std::cout << "The equation: " << ellipse->curveFormula << "  has been added, its area = " << ellipse->area << std::endl;
+				object->addObject(*ellipse.get());
+				break;
+			}
+			}
+		} while (figureType != 0);
+		sample = object->insert();
+		
 		return sample;
 	}
 
